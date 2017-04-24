@@ -1,0 +1,26 @@
+<h2>Basket</h2>
+{% if basket_items|length != 0%}
+<table>
+    <tr class="labels">
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Actions</td>
+    </tr>
+    {% for item in basket_items %}
+        <tr>
+            {% for key, value in item.items() %}
+                {% if key != '_id' %}
+                    <td>{{ value }}</td>
+                {% endif %}
+            {% endfor %}
+            <td>
+                <a href="/basket/edit/{{ item['_id'] }}/">Edit</a>
+                <a href="/basket/delete/{{ item['_id'] }}/">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <b>No data found here</b><br/>
+    <a href="/catalog/">Back to the Catalog listing</a><br/>
+{% endif %}

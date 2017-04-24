@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shopping</title>
+        <style>
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
+            .main {
+                margin: 0px auto;
+                padding: 0px;
+                width: 960px;
+                background-color: rgba(81,160,81,0.27);
+            }
+            table, td, tr {
+                border: 1px solid black
+            }
+            td {
+                padding: 15px
+            }
+            .labels {
+                font-weight: bold
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <a href="/product/add/">Add product</a>
+            <div>
+                {% if page_name %}
+                    {% include page_name ~ ".html" %}
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<h2>Catalog</h2>
+{% if catalog_items|length != 0 %}
+{% include "search_form.html" %}
+    <a href="/basket/">Shopping Basket</a>
+    <table>
+    <tr class="labels">
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Actions</td>
+    </tr>
+    {% for item in catalog_items %}
+        <tr>
+            {% for key, value in item.items() %}
+                {% if key != '_id' %}
+                   <td>{{ value }}</td>
+                {% endif %}
+            {% endfor %}
+            <td>
+                <a href="/product/edit/{{ item['_id'] }}/">Edit</a>
+                <a href="/product/delete/{{ item['_id'] }}/">Delete</a>
+                <a href="/basket/add/{{ item['_id'] }}/">Add to Basket</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<div>
+    {% if total_pages > 1 %}
+        {% for p in range(1, total_pages + 1) %}
+            {% if p == current_page %}
+                {{ p }}
+            {% else %}
+            <a href="{{ path }}{{ p }}/{{ search_query }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% else %}
+    <b>No data found here</b>
+{% endif %}

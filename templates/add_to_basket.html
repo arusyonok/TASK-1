@@ -1,0 +1,11 @@
+{% if product.qty == 0 %}
+    <p>You can't buy <b>{{ product.name }}</b>. There is none in stock</p>
+    <a href="/catalog/">Back to the Catalog listing</a>
+{% else %}
+    <form method="post" action="/basket/add/">
+        Buy enough <b>{{ product.name }}</b>. There is only <b>{{ product.qty }}</b> in stock<br/>
+        Quantity <input type="number" name="basket_qty"/><br/>
+        <input type="hidden" name="product_id" value="{{ product['_id'] }}">
+        <input type="submit" value="Buy!" >
+    </form>
+{% endif %}

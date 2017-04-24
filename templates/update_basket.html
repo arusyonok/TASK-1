@@ -1,0 +1,10 @@
+
+    <a href="/catalog/">Back to the Catalog listing</a><br/>
+    <a href="/basket/">Back to the Basket listing</a><br/>
+
+    Edit Basket Item <b>{{ basket.name }}</b>
+    <form method="post" action="/basket/edit/">
+        Quantity:  <input type="number" name="basket_qty" value="{{ basket.qty }}"/><br/>
+        <input type="hidden" name="basket_id" value="{{ basket['_id'] }}">
+        <input type="submit" value="Edit Basket Item" />
+    </form>

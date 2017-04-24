@@ -1,0 +1,10 @@
+
+    <a href="/catalog/">Back to the Catalog listing</a>
+    Edit product
+    <form method="post" action="/product/edit/">
+        Product name: <input type="text" name="product_name" value="{{ product.name }}"/><br/>
+        Price:  <input type="number" name="product_price" value="{{ product.price }}"/><br/>
+        Quantity:  <input type="number" name="product_qty" value="{{ product.qty }}"/><br/>
+        <input type="hidden" name="product_id" value="{{ product['_id'] }}">
+        <input type="submit" value="Edit Product" />
+    </form>
